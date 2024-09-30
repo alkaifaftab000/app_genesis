@@ -1,5 +1,6 @@
 import 'package:app_genesis/utils/fonts.dart';
 import 'package:app_genesis/view/auth/signup_page.dart';
+import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -31,8 +32,7 @@ class LoginPage extends StatelessWidget {
                 child: Container(
                   padding: isLargeScreen
                       ? const EdgeInsets.symmetric(horizontal: 40, vertical: 20)
-                      : const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                      : const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   constraints: BoxConstraints(
                     maxWidth: isLargeScreen ? 500 : 400,
                   ),
@@ -89,8 +89,11 @@ class LoginPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            onPressed: () {
-                              // Handle login action
+                            onPressed: () async {
+                              // Update the URL to include the redirect_uri
+                              await EasyLauncher.url(
+                                  url:
+                                  "https://harshraj709.pythonanywhere.com/api/auth/social/login/google/?redirect_uri=https://yourdomain.com/auth");
                             },
                             icon: Image.asset(
                               "assets/image/google_logo.png",

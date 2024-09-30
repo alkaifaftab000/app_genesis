@@ -1,5 +1,6 @@
 import 'package:app_genesis/Backend/api_controller.dart';
 import 'package:app_genesis/utils/utility.dart';
+import 'package:app_genesis/view/TeacherPanel/teacher.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
@@ -49,7 +50,16 @@ class _TrueFalseScreenState extends State<TrueFalseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Question'),
+        title: Row(
+          children: [
+            IconButton(onPressed: (){
+              Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>const Teacher()));
+            }, icon:const Icon(Icons.arrow_back_ios_new_rounded)),
+            const SizedBox(width: 10),
+            const Text('Create Question'),
+          ]
+        ),
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
@@ -234,7 +244,7 @@ class _TrueFalseScreenState extends State<TrueFalseScreen> {
 
                         Map<String, dynamic> data = {
                           "true_or_false_question": {
-                            "correct_answer": _isCorrectSelected
+                            "correct_answer": _selectedOption
                           },
                           "question_text":
                               _questionController.text.toString().trim(),

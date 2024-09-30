@@ -1,6 +1,6 @@
-import 'package:app_genesis/models/answer_model.dart';
+import 'package:app_genesis/models/Questions/answer_fetch_model.dart';
 
-class QuestionFetch {
+class QuestionFetchModel {
   final int id;
   final String questionText;
   final String questionType;
@@ -9,9 +9,9 @@ class QuestionFetch {
   final bool isPublic;
   final int course;
   final int createdBy;
-  final QuestionAnswer answer;
+  final AnswerFetchModel answer;
 
-  QuestionFetch({
+  QuestionFetchModel({
     required this.id,
     required this.questionText,
     required this.questionType,
@@ -23,38 +23,38 @@ class QuestionFetch {
     required this.answer,
   });
 
-  factory QuestionFetch.fromJson(Map<String, dynamic> json) {
-    QuestionAnswer answer;
+  factory QuestionFetchModel.fromJson(Map<String, dynamic> json) {
+    AnswerFetchModel answer;
 
     switch (json['question_type']) {
       case 'FIBL':
-        answer = FillInTheBlankAnswer.fromJson(json['fill_in_the_blank_question']);
+        answer = FillUpsAnswerModel.fromJson(json['fill_in_the_blank_question'] ?? {});
         break;
       case 'TF':
-        answer = TrueFalseAnswer.fromJson(json['true_or_false_question']);
+        answer = TFAnswerModel.fromJson(json['true_or_false_question'] ?? {});
         break;
       case 'MCQ':
-        answer = SingleChoiceAnswer.fromJson(json['multiple_choice_question']);
+        answer = SingleChoiceAnswerModel.fromJson(json['multiple_choice_question'] ?? {});
         break;
       case 'MAMCQ':
-        answer = MultipleChoiceAnswer.fromJson(json['multiple_choice_question']);
+        answer = MultipleChoiceAnswerModel.fromJson(json['multiple_choice_question'] ?? {});
         break;
       case 'MTF':
-        answer = MatchTheFollowingAnswer.fromJson(json['match_the_following_question']);
+        answer = MatchAnswerModel.fromJson(json['match_the_following_question'] ?? {});
         break;
       default:
         throw FormatException('Unknown question type: ${json['question_type']}');
     }
 
-    return QuestionFetch(
-      id: json['id'],
-      questionText: json['question_text'],
-      questionType: json['question_type'],
-      description: json['description'],
-      marks: json['marks'].toDouble(),
-      isPublic: json['is_public'],
-      course: json['course'],
-      createdBy: json['created_by'],
+    return QuestionFetchModel(
+      id: json['id'] ?? 0,
+      questionText: json['question_text'] ?? '',
+      questionType: json['question_type'] ?? '',
+      description: json['description'] ?? '',
+      marks: (json['marks'] ?? 0).toDouble(),
+      isPublic: json['is_public'] ?? false,
+      course: json['course'] ?? 0,
+      createdBy: json['created_by'] ?? 0,
       answer: answer,
     );
   }

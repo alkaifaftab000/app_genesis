@@ -13,4 +13,26 @@ class Utility {
       style: style,
     );
   }
+
+  static ToastificationItem toastMessageSuccess(String message, BuildContext context) {
+    return toastification.show(
+      alignment: Alignment.bottomCenter,
+      context: context, // optional if you use ToastificationWrapper
+      title: Text(message),
+      autoCloseDuration: const Duration(seconds: 5),
+      type: ToastificationType.success,
+      style: ToastificationStyle.simple,
+    );
+  }
+
+  static ToastificationItem toastMessageFail(String message, BuildContext context) {
+    return toastification.show(
+      alignment: Alignment.bottomCenter,
+      context: context, // optional if you use ToastificationWrapper
+      title: Text(message),
+      autoCloseDuration: const Duration(seconds: 5),
+      type: ToastificationType.error,
+      style: ToastificationStyle.simple,
+    );
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:app_genesis/app_theme.dart';
 import 'package:app_genesis/provider/theme_changer_provider.dart';
-import 'package:app_genesis/view/app_info_view.dart';
+import 'package:app_genesis/view/view_services/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
           }
 
           return MaterialApp(
-              home: const AppInfoView(),
+              home: SplashViewNew(),
               themeMode: themeChanger.themeMode,
               theme: Apptheme().appLightTheme(context),
               darkTheme: Apptheme().appDarkTheme(context));

@@ -3,39 +3,41 @@ import 'package:app_genesis/view/TeacherPanel/profile_teacher.dart';
 import 'package:app_genesis/view/TeacherPanel/search_teacher.dart';
 import 'package:app_genesis/view/TeacherPanel/teacher_view.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Teacher extends StatefulWidget {
   const Teacher({super.key});
-
   @override
   State<Teacher> createState() => _TeacherState();
 }
 
 class _TeacherState extends State<Teacher> with TickerProviderStateMixin {
-  // Current page index
   int _selectedIndex = 0;
-
-  // List of screens to display
   final List<Widget> _screens = [
-    const TeacherView(), // Placeholder for the first tab
+    const TeacherView(),
     const SearchTeacher(),
     const LeaderboardTeacher(),
     const ProfileTeacher(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.cyan,
         automaticallyImplyLeading: false,
-        title: const Text("Teacher Panel"),
+        title: Text("Teacher Panel",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            )),
         centerTitle: true,
+        // actions: [IconButton(onPressed: onPressed, icon: icon)],
       ),
       body: _screens[_selectedIndex], // Display the selected screen
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.messenger_outline_rounded),
             label: 'Home',
           ),
           BottomNavigationBarItem(

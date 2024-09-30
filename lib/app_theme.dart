@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Apptheme {
   ThemeData appLightTheme(BuildContext context) {
@@ -13,16 +14,22 @@ class Apptheme {
         appBarTheme: AppBarTheme(backgroundColor: Colors.grey.shade100),
         brightness: Brightness.light,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Colors.grey.shade200,
+          backgroundColor: Colors.cyan,
           elevation: 10,
           enableFeedback: true,
-          selectedIconTheme: const IconThemeData(color: Colors.cyan),
-          unselectedIconTheme: IconThemeData(color: Colors.grey.shade800),
-          selectedItemColor: Colors.cyan,
-          unselectedItemColor: Colors.black,
+          selectedIconTheme: const IconThemeData(color: Colors.white),
+          unselectedIconTheme: const IconThemeData(color: Colors.white),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
           selectedLabelStyle:
-              const TextStyle(fontFamily: 'Popin', fontWeight: FontWeight.bold),
-          unselectedLabelStyle: const TextStyle(color: Colors.black),
+          GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          unselectedLabelStyle: GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
           showSelectedLabels: true,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,

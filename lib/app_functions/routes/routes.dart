@@ -4,16 +4,16 @@ import 'package:app_genesis/view/TeacherPanel/home_view.dart';
 import 'package:app_genesis/view/TeacherPanel/leaderboard_teacher.dart';
 import 'package:app_genesis/view/TeacherPanel/profile_teacher.dart';
 import 'package:app_genesis/view/TeacherPanel/search_teacher.dart';
-import 'package:app_genesis/view/splash_view.dart';
 import 'package:app_genesis/view/TeacherPanel/teacher.dart';
 import 'package:app_genesis/view/TeacherPanel/teacher_view.dart';
+import 'package:app_genesis/view/view_services/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case RoutesNames.splashScreen:
-        return MaterialPageRoute(builder: (context) => const SplashView());
+        return MaterialPageRoute(builder: (context) => const SplashViewNew());
       case RoutesNames.appInfoScreen:
         return MaterialPageRoute(builder: (context) => const AppInfoView());
       case RoutesNames.homeScreen:
